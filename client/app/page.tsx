@@ -31,7 +31,7 @@ export default function Home() {
                 Admin
               </Link>
                <Link href="/login" className="ml-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg">
-                Login 
+                Login
               </Link>
             </div>
             <div className="hidden md:block">

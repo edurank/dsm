@@ -42,13 +42,13 @@ namespace fsmAPI.Services.Repositories
             return user_list;
         }
 
-        public async Task<bool> NewUser(User user)
+        public async Task<bool> NewUser(RegisterUser user)
         {
             var result = (await new DBManager("DEV").ExecuteQueryAsync<bool>("dbo.spNewUser", new
             {
-                firstName = user.FirstName,
-                email = user.Email,
-                password = user.Password
+                email = user.email,
+                password = user.password,
+                dateOfBirth = user.dateOfBirth
             }));
             return true;
         }

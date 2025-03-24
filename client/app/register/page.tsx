@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 interface FormData {
     email: string;
@@ -20,13 +21,51 @@ export default function Register() {
         captcha: ''
     });
 
-
-    const handleChange = () => {
-
+    const handleChange = (e: any) => {
+        const { name, value } = e.target;
+        setForm({
+            ...form,
+            [name]: value
+        });
     }
 
     const handleSubmit = () => {
+        var submitData = {
+            email: form.email,
+            password: form.password,
+            dateOfBirth: form.dateOfBirth
+        }
 
+        var config = {
+            url: process.env.NEXT_PUBLIC_APIURL + "/user/new",
+            method: 'post',
+            data: submitData
+        }
+
+        if(validateData())
+        {
+            console.log(validateData());
+        }
+
+        // Check everything
+        return;
+        axios(config)
+            .then((response) => {
+
+            })
+            .catch((error) => {
+                console.log("Error at registering a new user.");
+            });
+    }
+
+    const validateData = () => {
+
+        if(0 > 1)
+        {
+            return false;
+        }
+
+        return true;
     }
 
     return (
@@ -106,11 +145,12 @@ export default function Register() {
           </div>
           <div className="flex items-center justify-between">
             <button
-              type="submit"
+              onClick={() => {handleSubmit}}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
               Register
             </button>
+
           </div>
         </form>
       </div>

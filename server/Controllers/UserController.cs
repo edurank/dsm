@@ -33,7 +33,7 @@ namespace UserAPI.Controllers
         }
 
         [HttpPost("new")]
-        public async Task<IActionResult> RegisterUser([FromBody] User user)
+        public async Task<IActionResult> RegisterUser([FromBody] RegisterUser user)
         {
             var response = await userRepository.NewUser(user);
             return Ok();

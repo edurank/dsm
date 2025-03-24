@@ -21,4 +21,11 @@
         public string IsVerified { get; set; } = "";
         public int Role { get; set; }
     }
+
+    public class RegisterUser
+    {
+        public string email { get; set; } = "";
+        public string password { get; set; } = "";
+        public string dateOfBirth { get; set; } = "";
+    }
 }
